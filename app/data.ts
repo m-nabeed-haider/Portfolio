@@ -77,105 +77,176 @@ export const projects: Project[] = [
   {
     slug: "fakeless",
     title: "FakeLess",
-    tag: "Final Year Project — Audio Deepfake Prevention",
+    tag: "Audio Deepfake Prevention",
     status: "Research",
-    timeline: "TODO — e.g. Sep 2025 – Present",
-    role: "Sole researcher & engineer",
+    timeline: "2026",
+    role: "AI Researcher & Developer",
     summary:
-      "An AI system that protects human voices from unauthorized cloning using adversarial perturbations, while preserving natural speech quality.",
-    problem:
-      "Voice cloning models can reproduce a speaker's identity from a few seconds of audio, and there is no accessible way for someone to make their own voice resistant to being cloned without degrading how it sounds.",
-    solution:
-      "A universal adversarial perturbation is learned and layered onto a speaker's audio before release. The perturbation is imperceptible to human listeners but disrupts the embeddings that cloning models like XTTS-v2 rely on, measured against HiFi-GAN vocoded output and the LibriSpeech benchmark.",
-    stack: ["Python", "PyTorch", "SpeechBrain", "HiFi-GAN", "XTTS-v2", "LibriSpeech", "Signal Processing"],
-    highlights: [
-      "Universal perturbation learning across speakers",
-      "Voice anti-cloning without audible artifacts",
-      "Spectrogram-level signal processing",
-      "Adversarial ML evaluated against a real cloning pipeline",
-    ],
-    architecture:
-      "Speech is converted to mel-spectrograms, an adversarial perturbation network is trained against a frozen XTTS-v2 cloning target, and output is vocoded back through HiFi-GAN for perceptual evaluation against LibriSpeech samples.",
-    lessons:
-      "TODO — e.g. what you learned about the tradeoff between perturbation strength and perceptual quality.",
-    githubUrl: "https://github.com/m-nabeed-haider/TODO-fakeless", // TODO
-  },
-  {
-    slug: "production-rag",
-    title: "Production-Grade RAG System",
-    tag: "Retrieval-Augmented Generation",
-    status: "Production",
-    timeline: "TODO",
-    role: "TODO — e.g. Solo build",
-    summary:
-      "An end-to-end RAG system with document ingestion, vector search, evaluation, observability, and containerized deployment.",
-    problem:
-      "Most RAG demos stop at 'query goes in, answer comes out.' They have no way to measure retrieval quality, no visibility once deployed, and no repeatable path to production.",
-    solution:
-      "A full pipeline covering ingestion, chunking, and embedding into FAISS, served behind a FastAPI layer, with retrieval and answer quality evaluated on a held-out set and Prometheus/Grafana dashboards tracking latency and failure modes in real time.",
-    stack: ["LangChain", "FAISS", "FastAPI", "Docker", "Prometheus", "Grafana", "LLMs"],
-    highlights: [
-      "Production-oriented architecture, not a notebook demo",
-      "Retrieval and answer-quality evaluation harness",
-      "Prometheus + Grafana observability",
-      "Fully containerized deployment",
-    ],
-    architecture:
-      "Documents are chunked and embedded into a FAISS index, a FastAPI service handles retrieval and generation, and Prometheus scrapes service metrics visualized in Grafana — all packaged as Docker services.",
-    lessons: "TODO — e.g. what evaluating retrieval quality taught you that a demo wouldn't have surfaced.",
-    githubUrl: "https://github.com/m-nabeed-haider/TODO-rag-system", // TODO
-  },
-  {
-    slug: "ai-consulting-agents",
-    title: "AI Consulting Multi-Agent System",
-    tag: "Multi-Agent Orchestration",
-    status: "In Progress",
-    timeline: "TODO",
-    role: "TODO",
-    summary:
-      "A multi-agent workflow built on LangGraph, with modular agents collaborating on business consulting tasks.",
-    problem:
-      "A single LLM call struggles with multi-step business analysis that requires planning, research, and tool use in sequence rather than one shot.",
-    solution:
-      "Planning and research agents are composed as a LangGraph state machine, each with scoped tools and responsibilities, coordinating to break down a business task, gather information, and produce a structured recommendation.",
-    stack: ["LangGraph", "Ollama", "Python", "FastAPI", "Docker"],
-    highlights: [
-      "Multi-agent orchestration with explicit state",
-      "Dedicated planning and research agents",
-      "Local model serving via Ollama",
-      "Tool-using agents with scoped responsibilities",
-    ],
-    architecture:
-      "A LangGraph state graph coordinates a planning agent and one or more research agents, each with tool access, routed through FastAPI and served locally via Ollama.",
-    lessons: "TODO — e.g. what you learned about agent coordination failure modes.",
-    githubUrl: "https://github.com/m-nabeed-haider/TODO-consulting-agents", // TODO
-  },
-  {
-    slug: "sd-lora",
-    title: "Stable Diffusion LoRA Fine-Tuning",
-    tag: "Generative Vision",
-    status: "Completed",
-    timeline: "TODO",
-    role: "TODO",
-    summary:
-      "Fine-tuned Stable Diffusion models using LoRA for efficient, low-cost personalization and image generation.",
-    problem:
-      "Full fine-tuning of a diffusion model for a new subject or style is expensive and easy to overfit with a small dataset.",
-    solution:
-      "Low-Rank Adaptation was applied to targeted attention layers of Stable Diffusion, training only a small set of additional parameters to personalize outputs while keeping the base model frozen.",
-    stack: ["Python", "PyTorch", "Diffusers", "LoRA"],
-    highlights: [
-      "Parameter-efficient fine-tuning via LoRA",
-      "Personalized image generation from a small dataset",
-      "Frozen base model, lightweight adapter training",
-    ],
-    architecture:
-      "LoRA adapters are injected into the attention layers of a pretrained Stable Diffusion checkpoint and trained on a small target dataset, with the base weights left untouched.",
-    lessons: "TODO — e.g. dataset size vs. output quality tradeoffs you observed.",
-    githubUrl: "https://github.com/m-nabeed-haider/TODO-sd-lora", // TODO
-  },
-];
+      "Designed and developed an audio protection framework that reduces the effectiveness of neural voice cloning while preserving perceptual speech quality.",
 
+    problem:
+      "Modern neural voice cloning models can replicate a speaker's identity using only a few seconds of speech, creating serious privacy and security concerns.",
+
+    solution:
+      "Built an end-to-end deep learning pipeline that learns universal adversarial perturbations to protect speech against cloning attacks while maintaining natural audio quality. The system leverages SpeechBrain speaker embeddings, HiFi-GAN reconstruction, and objective speech quality metrics for evaluation.",
+
+    stack: [
+      "Python",
+      "PyTorch",
+      "SpeechBrain",
+      "HiFi-GAN",
+      "LibriSpeech"
+    ],
+
+    highlights: [
+      "Designed an end-to-end audio deepfake prevention framework",
+      "Implemented universal adversarial perturbation learning",
+      "Built automated preprocessing pipelines for LibriSpeech",
+      "Integrated SpeechBrain speaker embeddings",
+      "Used HiFi-GAN for high-quality speech reconstruction",
+      "Evaluated using PESQ, STOI, and embedding similarity metrics"
+    ],
+
+    architecture:
+      "Audio is preprocessed from the LibriSpeech dataset, converted into features for model training, optimized using speaker embedding objectives, reconstructed with HiFi-GAN, and evaluated using objective speech quality and speaker similarity metrics.",
+
+    lessons:
+      "Gained practical experience in adversarial machine learning, speech processing, dataset engineering, and balancing speaker privacy with perceptual audio quality.",
+
+    githubUrl: "https://github.com/MuhammadTahirSundhu/FYP-FakeLess"
+  },
+
+  {
+    slug: "scar",
+    title: "SCAR - Multimodal AI Assistant",
+    tag: "Generative AI Assistant",
+    status: "Completed",
+    timeline: "2026",
+    role: "AI Developer",
+
+    summary:
+      "Developed a Jarvis-inspired multimodal AI assistant capable of conversational interaction, retrieval-augmented reasoning, image generation, and local automation.",
+
+    problem:
+      "Most personal AI assistants rely on cloud APIs and provide limited extensibility for integrating local models, custom knowledge bases, and automation workflows.",
+
+    solution:
+      "Built a modular AI assistant powered by local LLMs using Ollama, Retrieval-Augmented Generation, Stable Diffusion image generation, and external APIs for real-time information.",
+
+    stack: [
+      "Python",
+      "FastAPI",
+      "Ollama",
+      "LangChain",
+      "n8n",
+      "RAG",
+      "Stable Diffusion 1.5",
+      "LoRA"
+    ],
+
+    highlights: [
+      "Jarvis-inspired multimodal assistant",
+      "Retrieval-Augmented Generation pipeline",
+      "Google Drive document integration",
+      "Stable Diffusion LoRA fine-tuning",
+      "Weather, News, and Sports API integration",
+      "Modular architecture for future expansion"
+    ],
+
+    architecture:
+      "FastAPI backend orchestrates locally hosted Ollama models, n8n automation workflows, RAG pipelines, Stable Diffusion image generation, and external APIs within a modular architecture.",
+
+    lessons:
+      "Learned how to design scalable AI systems by combining LLMs, retrieval pipelines, automation workflows, multimodal generation, and external services.",
+
+    githubUrl: "https://github.com/MuhammadTahirSundhu/SCAR-AIOS_Generative_AI_Project"
+  },
+
+  {
+    slug: "gymbuddy",
+    title: "GymBuddy",
+    tag: "AI Fitness Assistant",
+    status: "Completed",
+    timeline: "2026",
+    role: "Backend AI Developer",
+
+    summary:
+      "Developed backend REST APIs for an AI-powered fitness assistant capable of providing personalized fitness recommendations.",
+
+    problem:
+      "Traditional fitness applications lack intelligent context-aware guidance tailored to user goals and external knowledge.",
+
+    solution:
+      "Built FastAPI backend services integrated with locally hosted Ollama models and a Retrieval-Augmented Generation workflow to provide accurate, context-aware fitness assistance.",
+
+    stack: [
+      "Python",
+      "FastAPI",
+      "Ollama",
+      "RAG"
+    ],
+
+    highlights: [
+      "RESTful backend APIs",
+      "Local LLM integration",
+      "Retrieval-Augmented Generation",
+      "Context-aware recommendations",
+      "Team collaboration"
+    ],
+
+    architecture:
+      "FastAPI exposes backend endpoints that communicate with locally hosted Ollama language models while retrieving relevant information through a RAG pipeline.",
+
+    lessons:
+      "Improved backend API development skills while integrating LLMs into production-style AI applications.",
+
+    githubUrl: "https://github.com/BilalTariq03/GymBuddy"
+  },
+
+  {
+    slug: "production-mlops",
+    title: "Production MLOps Pipeline",
+    tag: "Production AI Infrastructure",
+    status: "Completed",
+    timeline: "2026",
+    role: "ML Engineer",
+
+    summary:
+      "Developed a production-oriented machine learning inference service featuring monitoring, containerization, and CI automation.",
+
+    problem:
+      "Many machine learning projects work well during development but lack deployment, monitoring, testing, and reproducibility required for production.",
+
+    solution:
+      "Built a FastAPI inference service packaged with Docker, monitored using Prometheus and Grafana, and automated testing through GitHub Actions.",
+
+    stack: [
+      "Python",
+      "FastAPI",
+      "Docker",
+      "Prometheus",
+      "Grafana",
+      "GitHub Actions"
+    ],
+
+    highlights: [
+      "Production-ready inference service",
+      "Docker containerization",
+      "Prometheus monitoring",
+      "Grafana dashboards",
+      "GitHub Actions CI workflows",
+      "Modular software architecture"
+    ],
+
+    architecture:
+      "FastAPI serves machine learning inference while Docker ensures reproducible deployments. Prometheus collects runtime metrics visualized through Grafana dashboards, with GitHub Actions automating testing and deployment.",
+
+    lessons:
+      "Developed a deeper understanding of deployment, observability, containerization, CI/CD, and production machine learning workflows.",
+
+    githubUrl: "https://github.com/m-nabeed-haider/course-project-m-nabeed-haider"
+  }
+];
 export type TimelineItem = {
   period: string;
   title: string;
