@@ -12,11 +12,11 @@ export const profile = {
   status: "Final Year Computer Science Student",
   summary:
     "I build AI systems that hold up outside a notebook — retrieval pipelines, multi-agent workflows, and adversarial ML, shipped with the monitoring and deployment discipline of production software, not the polish of a demo.",
-  email: "TODO@example.com", // TODO: your email
+  email: "nabeedtouseeq@gmail.com", // TODO: your email
   githubProfile: "https://github.com/m-nabeed-haider",
-  linkedin: "https://linkedin.com/in/TODO", // TODO: your LinkedIn URL
-  resumeUrl: "/resume.pdf", // TODO: replace /public/resume.pdf with your real resume — keep the filename & this path in sync (must be in /public, NOT next to data.ts)
-};
+  linkedin: "https://www.linkedin.com/in/muhammad-nabeed-haider-92a371240/", // TODO: your LinkedIn URL
+  resumeUrl: "/resume.pdf"
+}
 
 export const aboutPoints = [
   {
